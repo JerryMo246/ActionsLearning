@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Action.Docker.Web/Dockerfile --tag docker.web:$(date +%s)
+      run: docker build . --file Actions.Docker.Web/Dockerfile --tag docker.web:$(date +%s)
