@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build and Docker Image CI
 
 on:
   push:
@@ -12,7 +12,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -25,7 +24,10 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      
+  
+  docker:
+    runs-on: ubuntu-latest
+    steps:  
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Actions.Docker.Web/Dockerfile --tag docker.web:$(date +%s)
